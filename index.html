@@ -2,123 +2,355 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parallax Scrolling - Vainilla JS</title>
-    <!-- ESTILOS -->
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- FUENTES -->
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sarala&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/timeline.css">
+    <title>Catálogo de Productos - Google Maps</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #mapOptions {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            z-index: 10;
+            padding: 10px;
+        }
+        .tab-content {
+            padding: 10px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 10px;
+            flex-grow: 1;
+            text-align: center;
+            border-bottom: 2px solid transparent;
+        }
+        .tab.active {
+            border-bottom: 2px solid #007bff;
+            font-weight: bold;
+        }
+        #mapOptions .address-section {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        #mapOptions .btn {
+            margin-top: 10px;
+        }
+        .btn-group {
+            width: 100%;
+        }
+        .btn-group button {
+            flex-grow: 1;
+        }
+        #generalContent img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        #storeImage {
+            max-width: 350px; /* Ajusta el valor según el tamaño que desees */
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .review {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .storeRating{
+            color: gold;
+        }
+    </style>
 </head>
 <body>
-    <header id="header">
-        <img class="logo" alt="logo" src="./images/panda-logo.png">
-        <div class="menu"></div>
-        <nav>
-            <ul class="menulist">
-                <li><a href="#" class="active">INICIO</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <img src="./images/nube1.png" alt="nube1" id="nube1">
-        <img src="./images/fondo_transparente.png" alt="" id="transparente">
-        <img src="./images/nube2.png" alt="nube2" id="nube2">
-        <h2 id="slogan">¡Que comience el viaje!</h2>
-        <img src="./images/fondo.png" alt="fondo" id="fondo">
-        <img src="./images/viento.png" alt="viento" id="viento">
-        <img src="./images/persona.png" alt="persona" id="persona">
-    </section>
-    <div class="container">
-        <div class="main-timeline">
-            <!-- start experience section-->
-            <div class="timeline">
-                <div class="icon"></div>
-                <div class="date-content">
-                    <div class="date-outer">
-                        <span class="date">
-                                <span class="month">Nivel</span>
-                        <span class="year">1</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <h5 class="title">Perspectiva Heterogenea</h5>
-                    <p class="description">
-                        Se centra en las diferencias individuales, la personalidad, la percepción y atribución, la motivación y la satisfacción laboral
-                    </p>
-                </div>
-            </div>
-            <!-- end experience section-->
-            <!-- start experience section-->
-            <div class="timeline">
-                <div class="icon"></div>
-                <div class="date-content">
-                    <div class="date-outer">
-                        <span class="date">
-                                <span class="month">Nivel</span>
-                        <span class="year">2</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <h5 class="title">Macro Perspectiva</h5>
-                    <p class="description">
-                        Se refiere al comportamiento del sistema organizativo en su conjunto. Esto se llama comportamiento de macroorganismo y se refiere al estudio del comportamiento de organizaciones enteras.
-                    </p>
-                </div>
-            </div>
-            <!-- end experience section-->
-            <!-- start experience section-->
-            <div class="timeline">
-                <div class="icon"></div>
-                <div class="date-content">
-                    <div class="date-outer">
-                        <span class="date">
-                                <span class="month">Nivel</span>
-                        <span class="year">3</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <h5 class="title">Perspectiva intermedia</h5>
-                    <p class="description">
-                        También llamado comportamiento meso organizativo porque sirve como vínculo entre las otras dos perspectivas de comportamiento organizacional.<br>Se pone énfasis en el comportamiento de las personas que trabajan en grupos o equipos. La perspectiva central del CO se basa en la investigación grupal, el empoderamiento y las dinámicas grupales e intergrupales.
-                    </p>
-                </div>
-            </div>
-            <!-- end experience section-->
-            <!-- start experience section-->
-            <div class="timeline">
-                <div class="icon"></div>
-                <div class="date-content">
-                    <div class="date-outer">
-                        <span class="date">
-                                <span class="month">Nivel</span>
-                        <span class="year">4</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <h5 class="title">Micro Perspectiva</h5>
-                    <p class="description">
-                        De acuerdo con sus orígenes, la perspectiva micro del comportamiento organizacional tiene una clara orientación psicológica. Se centra en las diferencias individuales, la personalidad, la percepción y atribución, la motivación y la satisfacción laboral.<br>La investigación en esta área se centra en los efectos de las habilidades en la productividad de las personas, qué las motiva para realizar las tareas, la satisfacción laboral y cómo se sienten o perciben su trabajo.
-                    </p>
-                </div>
-            </div>
-            <!-- end experience section-->
-        </div>
-    </div>
-    <!-- SCRIPT -->
-    <script src="./js/script.js"></script>
-    <script src="js/timeline.js"></script>
-</body>
+    <div id="map"></div>
 
+    <div id="mapOptions" class="card">
+        <img id="storeImage" src="https://via.placeholder.com/350x200" alt="Imagen del lugar">
+        <!-- Pestañas -->
+        <div class="tabs">
+            <div class="tab active" id="generalTab">Vista General</div>
+            <div class="tab" id="infoTab">Productos</div>
+            <div class="tab" id="reviewsTab">Reseñas</div>
+        </div>
+
+        <!-- Contenido de las pestañas -->
+        <div class="tab-content">
+            <!-- Productos -->
+            <div id="infoContent">
+                fdsfd
+            </div>
+
+            <!-- Reseñas -->
+            <div id="reviewsContent" style="display: none;">
+                <p></p>
+            </div>
+
+            <!-- Vista General -->
+            <div id="generalContent" style="display: block;">
+                <p><strong>Nombre:</strong> <span id="storeName"></span></p>
+                <p><strong>Teléfono:</strong> <span id="storePhone"></span></p>
+                <p><strong>Calificación:</strong> <span id="storeRating" class="storeRating"></span></p>
+                <p class="mt-3"></p>
+                <p><strong>Ubicación:</strong> <span id="storeAddress"></span> </p>
+                <!-- Imagen del lugar -->
+                <a id="googleMapsLink" href="#" target="_blank" class="btn btn-primary btn-sm w-100">Abrir en Google Maps</a>
+                <a id="wazeLink" href="#" target="_blank" class="btn btn-success btn-sm w-100">Abrir en Waze</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let map;
+        let service;
+        let infowindow;
+        let userLocation;
+
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                    infowindow = new google.maps.InfoWindow();
+                    map = new google.maps.Map(document.getElementById("map"), {
+                        center: userLocation,
+                        zoom: 15,
+                    });
+
+                    new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                    });
+
+                    const request = {
+                        location: userLocation,
+                        radius: '5000',
+                        query: 'AMPM OR Fresh Market OR Musmanni',
+                    };
+
+                    service = new google.maps.places.PlacesService(map);
+                    service.textSearch(request, (results, status) => {
+                        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                            for (let i = 0; i < results.length && i < 20; i++) {
+                                createMarker(results[i]);
+                            }
+
+                            if (results.length > 0) {
+                                map.setCenter(results[0].geometry.location);
+                            }
+                        } else {
+                            console.error('Error en la búsqueda de lugares:', status);
+                        }
+                    });
+                }, () => {
+                    handleLocationError(true, map.getCenter());
+                });
+            } else {
+                handleLocationError(false, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, pos) {
+            infowindow = new google.maps.InfoWindow({
+                position: pos,
+                content: browserHasGeolocation
+                    ? 'Error: El servicio de Geolocalización falló.'
+                    : 'Error: Tu navegador no soporta Geolocalización.',
+            });
+            infowindow.open(map);
+        }
+
+        function createMarker(place) {
+            if (!place.geometry || !place.geometry.location) return;
+
+            const marker = new google.maps.Marker({
+                map,
+                position: place.geometry.location,
+                icon: {
+                    url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                    scaledSize: new google.maps.Size(40, 40)
+                }
+            });
+
+            google.maps.event.addListener(marker, "click", () => {
+                fetchPlaceDetails(place.place_id);
+            });
+        }
+
+        function fetchPlaceDetails(placeId) {
+            service.getDetails({ placeId }, (place, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    showMapOptions(place);
+                    showReviews(place);
+                } else {
+                    console.error('No se pudieron obtener los detalles del lugar:', status);
+                }
+            });
+        }
+
+        function showReviews(place) {
+            const reviewsContent = document.getElementById("reviewsContent");
+            reviewsContent.innerHTML = '';  // Limpiar reseñas previas
+
+            if (place.reviews && place.reviews.length > 0) {
+                place.reviews.forEach(review => {
+                    const reviewElement = document.createElement('div');
+                    reviewElement.classList.add('review');
+                    reviewElement.style.border = '1px solid #ddd';
+                    reviewElement.style.marginBottom = '15px';
+                    reviewElement.style.padding = '10px';
+                    reviewElement.style.borderRadius = '8px';
+
+                    reviewElement.innerHTML = `
+                        <p><strong>${review.author_name}</strong> <span class="storeRating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}<span></p>
+                        <p>${review.text}</p>
+                    `;
+                    reviewsContent.appendChild(reviewElement);
+                });
+            } else {
+                reviewsContent.innerHTML = '<p>No hay reseñas disponibles.</p>';
+            }
+        }
+
+
+        function showMapOptions(place) {
+    const storeName = document.getElementById("storeName");
+    const storeAddress = document.getElementById("storeAddress");
+    const storeRating = document.getElementById("storeRating");
+    const storePhone = document.getElementById("storePhone");
+    const googleMapsLink = document.getElementById("googleMapsLink");
+    const wazeLink = document.getElementById("wazeLink");
+    const infoContent = document.getElementById("infoContent");
+
+    const originLat = userLocation.lat();
+    const originLng = userLocation.lng();
+    const destLat = place.geometry.location.lat();
+    const destLng = place.geometry.location.lng();
+
+    // Información de la tienda
+    storeName.textContent = place.name || 'Nombre no disponible';
+    storeAddress.textContent = place.formatted_address || 'Dirección no disponible';
+    storePhone.textContent = place.formatted_phone_number || 'Teléfono no disponible';
+
+    // Mostrar calificación como estrellas
+    if (place.rating) {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            stars += i <= place.rating ? '★' : '☆'; // Estrella llena o vacía
+        }
+        storeRating.innerHTML = stars;
+    } else {
+        storeRating.innerHTML = 'No disponible';
+    }
+
+    // Enlaces para navegación
+    googleMapsLink.href = `https://www.google.com/maps/dir/?api=1&origin=${originLat},${originLng}&destination=${destLat},${destLng}`;
+    wazeLink.href = `https://waze.com/ul?ll=${destLat},${destLng}&navigate=yes`;
+
+    // Mostrar opciones del mapa
+    document.getElementById("mapOptions").style.display = 'block';
+
+    // Cambiar a la vista general y mostrar imagen
+    showGeneralContent(place);
+
+    // Mostrar productos según el tipo de tienda
+    if (place.name.includes('Fresh Market')) {
+        infoContent.innerHTML = `
+            <h5>Productos:</h5>
+            <div class="product">
+                <img src="https://media.iqos.com/is/image/pmintl/VEEV_VEEVNOW_VNVNL23_VV-BTRL-DCE2-DISCOVER-VEEV-NOW-TILE4-GRID1-G-D-2x_WEB_EN-OC?$JPG1920x700$&1716275570000" alt="Producto 1" class="img-fluid">
+                <p><strong>Veep</strong></p>
+            </div>
+            <div class="product">
+                <img src="https://scottishgrocer.co.uk/wp-content/uploads/2024/05/IQOS.jpg" alt="Producto 2" class="img-fluid">
+                <p><strong>Terea</strong></p>
+            </div>
+        `;
+    } else if (place.name.includes('AMPM')) {
+        infoContent.innerHTML = `
+            <h5>Productos:</h5>
+            <div class="product">
+                <img src="https://media.iqos.com/is/image/pmintl/VEEV_VEEVNOW_VNVNL23_VV-BTRL-DCE2-DISCOVER-VEEV-NOW-TILE4-GRID1-G-D-2x_WEB_EN-OC?$JPG1920x700$&1716275570000" alt="Producto 1" class="img-fluid">
+                <p><strong>Veep</strong></p>
+            </div>
+        `;
+    } else if (place.name.includes('Musmanni')) {
+        infoContent.innerHTML = `
+            <h5>Productos:</h5>
+            <div class="product">
+                <img src="https://scottishgrocer.co.uk/wp-content/uploads/2024/05/IQOS.jpg" alt="Producto 1" class="img-fluid">
+                <p><strong>Terea</strong></p>
+            </div>
+        `;
+    } else {
+        infoContent.innerHTML = '<p>Productos: No disponibles</p>';
+    }
+}
+
+
+
+        function showGeneralContent(place) {
+            document.getElementById('generalContent').style.display = 'block';
+            document.getElementById("infoContent").style.display = 'none';
+            const storeImage = document.getElementById('storeImage');
+            storeImage.src = place.photos ? place.photos[0].getUrl() : 'https://via.placeholder.com/350x200';
+        }
+
+        document.getElementById("generalTab").addEventListener("click", function() {
+            document.getElementById("generalContent").style.display = 'block';
+            document.getElementById("infoContent").style.display = 'none';
+            document.getElementById("reviewsContent").style.display = 'none';
+            this.classList.add("active");
+            document.getElementById("infoTab").classList.remove("active");
+            document.getElementById("reviewsTab").classList.remove("active");
+        });
+
+        document.getElementById("infoTab").addEventListener("click", function() {
+            document.getElementById("generalContent").style.display = 'none';
+            document.getElementById("infoContent").style.display = 'block';
+            document.getElementById("reviewsContent").style.display = 'none';
+            this.classList.add("active");
+            document.getElementById("generalTab").classList.remove("active");
+            document.getElementById("reviewsTab").classList.remove("active");
+        });
+
+        document.getElementById("reviewsTab").addEventListener("click", function() {
+            document.getElementById("generalContent").style.display = 'none';
+            document.getElementById("infoContent").style.display = 'none';
+            document.getElementById("reviewsContent").style.display = 'block';
+            this.classList.add("active");
+            document.getElementById("generalTab").classList.remove("active");
+            document.getElementById("infoTab").classList.remove("active");
+        });
+
+        // Cargar el mapa cuando se cargue la página
+        window.onload = initMap;
+    </script>
+
+    <!-- Google Maps JS API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9SWtTVb4CmjqmqBuJZpm4Xdj5RH4ghE8&libraries=places&callback=initMap" async defer></script>
+</body>
 </html>
